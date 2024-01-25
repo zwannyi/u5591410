@@ -1,4 +1,3 @@
-
 def morse_translator(text):
     morse_code_dict = {'A': '.-', 'B': '-...',
                       'C': '-.-.', 'D': '-..', 'E': '.',
