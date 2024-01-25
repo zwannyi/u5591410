@@ -1,5 +1,3 @@
-
-
 def case_counter(text):
     uppercase_count = 0
     lowercase_count = 0
