@@ -21,11 +21,25 @@ Example Test Cases:
 """
 
 
-def word_filter_counter(text, filter_words):
-    # Your code goes here
-    # Implement the logic to filter words and count their occurrences
-    pass  # Delete this after implementing some code inside this function
+import re
 
+def word_filter_counter(text, filter_words):
+    # Convert filter words to lowercase for case-insensitive comparison
+    filter_words_lower = [word.lower() for word in filter_words]
+
+    # Use regular expression to find all words in the text
+    words = re.findall(r'\b\w+\b', text.lower())
+
+    # Filter out words in the filter_words list and count occurrences
+    word_counts = {}
+    for word in words:
+        if word not in filter_words_lower:
+            if word in word_counts:
+                word_counts[word] += 1
+            else:
+                word_counts[word] = 1
+
+    return word_counts
 
 # Test cases
 print(
@@ -47,28 +61,5 @@ print(
 
 
 
-import re
 
-def word_filter_counter(text, filter_words):
-    # Convert filter words to lowercase for case-insensitive comparison
-    filter_words_lower = [word.lower() for word in filter_words]
-
-    # Use regular expression to find all words in the text
-    words = re.findall(r'\b\w+\b', text.lower())
-
-    # Filter out words in the filter_words list and count occurrences
-    word_counts = {}
-    for word in words:
-        if word not in filter_words_lower:
-            if word in word_counts:
-                word_counts[word] += 1
-            else:
-                word_counts[word] = 1
-
-    return word_counts
-
-# Example test cases
-print(word_filter_counter("Hello world, hello!", ["hello"]))  # Output: {'world': 1}
-print(word_filter_counter("The quick brown fox.", ["the"]))   # Output: {'quick': 1, 'brown': 1, 'fox': 1}
-print(word_filter_counter("Is this real life? Is this just fantasy?", ["is", "this", "just"]))  # Output: {'real': 1, 'life': 1, 'fantasy': 1
 
