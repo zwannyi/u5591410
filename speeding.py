@@ -25,10 +25,23 @@ Example Test Cases:
 
 
 def speeding_ticket(speed, is_birthday):
-    # Your code goes here
-    # Implement the logic based on the driver's speed and birthday condition
-    pass  # Delete this after implementing some code inside this function
+    # Adjust speed limits if it's the driver's birthday
+    if is_birthday:
+        speed -= 5
+    
+    # Determine ticket category based on speed
+    if speed <= 60:
+        return "No Ticket"
+    elif speed <= 80:
+        return "Small Ticket"
+    else:
+        return "Big Ticket"
 
+print(speeding_ticket(60, False))  # No Ticket
+print(speeding_ticket(75, False))  # Small Ticket
+print(speeding_ticket(85, False))  # Big Ticket
+print(speeding_ticket(65, True))   # No Ticket
+print(speeding_ticket(85, True))   # Small Ticket
 
 # Test cases
 speeding_ticket(60, False)  # Expected output: "No Ticket"
